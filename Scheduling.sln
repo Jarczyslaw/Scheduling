@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduling", "Scheduling\Scheduling.csproj", "{69B26988-0ECB-4B45-9E7F-B0A12AAB1F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduling.Lib", "Scheduling.Lib\Scheduling.Lib.csproj", "{5D87A56D-C466-4F39-AC75-D4135B58E999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69B26988-0ECB-4B45-9E7F-B0A12AAB1F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69B26988-0ECB-4B45-9E7F-B0A12AAB1F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69B26988-0ECB-4B45-9E7F-B0A12AAB1F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69B26988-0ECB-4B45-9E7F-B0A12AAB1F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D87A56D-C466-4F39-AC75-D4135B58E999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D87A56D-C466-4F39-AC75-D4135B58E999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D87A56D-C466-4F39-AC75-D4135B58E999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D87A56D-C466-4F39-AC75-D4135B58E999}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D1ACF6B-BEDB-4B4E-9695-A2A3BF0DF8DF}
+	EndGlobalSection
+EndGlobal
