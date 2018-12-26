@@ -2,7 +2,7 @@
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
-using Scheduling.Common;
+using Scheduling.Lib;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading;
@@ -11,7 +11,7 @@ using System.Windows.Threading;
 
 namespace Scheduling.ViewModels
 {
-    internal class MainWindowViewModel : BindableBase
+    internal class MainViewModel : BindableBase
     {
         private readonly IScheduler scheduler;
         private readonly IContainerExtension container;
@@ -19,7 +19,7 @@ namespace Scheduling.ViewModels
 
         private static readonly object sync = new object();
 
-        public MainWindowViewModel(IContainerExtension container, IScheduler scheduler)
+        public MainViewModel(IContainerExtension container, IScheduler scheduler)
         {
             this.container = container;
             this.scheduler = scheduler;
@@ -37,13 +37,19 @@ namespace Scheduling.ViewModels
             timer.Tick += (s, e) => RaisePropertyChanged(nameof(RunningJobs));
             timer.IsEnabled = true;
 
-            JobStartCommand = new DelegateCommand(() => scheduler.StartJob());
+            JobStartCommand = new DelegateCommand(StartJob);
         }
 
         public DelegateCommand JobStartCommand { get; }
         public ObservableCollection<JobLogViewModel> JobLogs { get; }
 
         public int RunningJobs => scheduler.RunningJobs;
+
+        private void StartJob()
+        {
+            var job = container.Resolve<Job>();
+            scheduler.StartJob(job);
+        }
 
         private void AddJobLog(DateTime timeStamp, string message)
         {
@@ -59,14 +65,14 @@ namespace Scheduling.ViewModels
             }
         }
 
-        private void SchedulerJobEnd(JobInfo endInfo)
+        private void SchedulerJobEnd(JobEndInfo endInfo)
         {
-            AddJobLog(endInfo.Timestamp, $"{endInfo.JobName} finished");
+            AddJobLog(endInfo.StartTime, $"{endInfo.Name} finished in {endInfo.Duration.TotalSeconds:0.00}s");
         }
 
-        private void SchedulerJobStart(JobInfo startInfo)
+        private void SchedulerJobStart(JobStartInfo startInfo)
         {
-            AddJobLog(startInfo.Timestamp, $"{startInfo.JobName} started");
+            AddJobLog(startInfo.StartTime, $"{startInfo.Name} started");
         }
     }
 }

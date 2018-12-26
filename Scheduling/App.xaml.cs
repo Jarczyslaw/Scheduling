@@ -1,6 +1,7 @@
 ﻿using Prism.Ioc;
 using Prism.Unity;
-using Scheduling.Lib;
+using Scheduling.Common;
+using Scheduling.FluentSchedulerLib;
 using Scheduling.Views;
 using System.Windows;
 

@@ -124,9 +124,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Scheduling.Lib\Scheduling.Lib.csproj">
+    <ProjectReference Include="..\Scheduling.Common\Scheduling.Common.csproj">
+      <Project>{8edbf3b2-cbc3-4109-9aa6-2c0287d277c0}</Project>
+      <Name>Scheduling.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduling.FluentSchedulerLib\Scheduling.FluentSchedulerLib.csproj">
       <Project>{5D87A56D-C466-4F39-AC75-D4135B58E999}</Project>
-      <Name>Scheduling.Lib</Name>
+      <Name>Scheduling.FluentSchedulerLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scheduling.QuartzLib\Scheduling.QuartzLib.csproj">
+      <Project>{f46b67bc-8a4b-4224-80f5-de5a3c9e01ac}</Project>
+      <Name>Scheduling.QuartzLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
