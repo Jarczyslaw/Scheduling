@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HeavyTask.cs" />
-    <Compile Include="IScheduler.cs" />
+    <Compile Include="IJobScheduler.cs" />
     <Compile Include="JobInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

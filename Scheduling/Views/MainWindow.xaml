@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         xmlns:prism="http://prismlibrary.com/"
         Title="Scheduling" Height="800" Width="800"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
         prism:ViewModelLocator.AutoWireViewModel="True">
 
     <Window.Resources>

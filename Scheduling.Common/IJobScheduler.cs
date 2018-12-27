@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scheduling.Common
 {
-    public interface IScheduler
+    public interface IJobScheduler
     {
         Action<JobInfo> JobStart { get; set; }
         Action<JobInfo> JobEnd { get; set; }

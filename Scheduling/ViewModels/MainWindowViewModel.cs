@@ -13,22 +13,15 @@ namespace Scheduling.ViewModels
 {
     internal class MainWindowViewModel : BindableBase
     {
-        private readonly IScheduler scheduler;
-        private readonly IContainerExtension container;
+        private IJobScheduler scheduler;
         private readonly DispatcherTimer timer;
 
         private static readonly object sync = new object();
 
-        public MainWindowViewModel(IContainerExtension container, IScheduler scheduler)
+        public MainWindowViewModel()
         {
-            this.container = container;
-            this.scheduler = scheduler;
-
             JobLogs = new ObservableCollection<JobLogViewModel>();
             BindingOperations.EnableCollectionSynchronization(JobLogs, sync);
-
-            scheduler.JobStart += SchedulerJobStart;
-            scheduler.JobEnd += SchedulerJobEnd;
 
             timer = new DispatcherTimer
             {
@@ -43,7 +36,22 @@ namespace Scheduling.ViewModels
         public DelegateCommand JobStartCommand { get; }
         public ObservableCollection<JobLogViewModel> JobLogs { get; }
 
-        public int RunningJobs => scheduler.RunningJobs;
+        public int RunningJobs
+        {
+            get
+            {
+                if (scheduler == null)
+                    return 0;
+                return scheduler.RunningJobs;
+            }
+        }
+
+        public void SetScheduler(IJobScheduler scheduler)
+        {
+            this.scheduler = scheduler;
+            scheduler.JobStart += SchedulerJobStart;
+            scheduler.JobEnd += SchedulerJobEnd;
+        }
 
         private void AddJobLog(DateTime timeStamp, string message)
         {

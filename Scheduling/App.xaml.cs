@@ -1,7 +1,6 @@
 ﻿using Prism.Ioc;
 using Prism.Unity;
 using Scheduling.Common;
-using Scheduling.FluentSchedulerLib;
 using Scheduling.Views;
 using System.Windows;
 
@@ -17,17 +16,15 @@ namespace Scheduling
             return Container.Resolve<MainWindow>();
         }
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        protected override void InitializeShell(Window shell)
         {
-            containerRegistry.RegisterSingleton<IScheduler, Scheduler>();
+            Current.MainWindow = shell;
+            Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
-        protected override void OnExit(ExitEventArgs e)
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            var scheduler = Container.Resolve<IScheduler>();
-            scheduler.StopAndBlock();
 
-            base.OnExit(e);
         }
     }
 }

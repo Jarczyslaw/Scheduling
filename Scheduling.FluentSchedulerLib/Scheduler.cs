@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Scheduling.FluentSchedulerLib
 {
-    public class Scheduler : IScheduler
+    public class Scheduler : IJobScheduler
     {
         public Action<JobInfo> JobStart { get; set; }
         public Action<JobInfo> JobEnd { get; set; }

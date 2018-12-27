@@ -46,10 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IJobExecutionContextExtensions.cs" />
+    <Compile Include="Job.cs" />
+    <Compile Include="JobListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduler.cs" />
+    <Compile Include="TriggerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Scheduling.Common\Scheduling.Common.csproj">
+      <Project>{8EDBF3B2-CBC3-4109-9AA6-2C0287D277C0}</Project>
+      <Name>Scheduling.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
